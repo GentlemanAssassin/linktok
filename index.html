@@ -873,6 +873,246 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ─── Stop Import Button ─────────────────────────────────────────────── */
+    .stop-import-btn {
+      margin-top: 8px;
+      width: 100%;
+      padding: 8px;
+      background: transparent;
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 8px;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      display: none;
+    }
+    .stop-import-btn.visible { display: block; }
+    .stop-import-btn:hover { background: rgba(239,68,68,0.08); }
+
+    /* ─── Import Action Row ───────────────────────────────────────────────── */
+    .import-action-row {
+      display: none;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .import-action-row.visible { display: flex; }
+    .refine-import-btn {
+      flex: 0 0 auto;
+      padding: 13px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .refine-import-btn:hover { background: rgba(255,255,255,0.06); }
+
+    /* ─── Refine Import Overlay ──────────────────────────────────────────── */
+    #refine-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      z-index: 90;
+      display: none;
+      flex-direction: column;
+    }
+    #refine-overlay.open { display: flex; }
+    .refine-hdr {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .refine-hdr-title { font-size: 16px; font-weight: 800; }
+    .refine-hdr-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    #refine-list {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .refine-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding: 12px 20px 6px;
+    }
+    .refine-domain-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 20px;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .refine-domain-row:hover, .refine-domain-row:active { background: rgba(255,255,255,0.03); }
+    .refine-check {
+      width: 20px; height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .refine-check.on {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+    .refine-check.on::after {
+      content: '';
+      width: 5px; height: 9px;
+      border: 2px solid #000;
+      border-top: none; border-left: none;
+      transform: rotate(45deg) translate(-1px, -1px);
+      display: block;
+    }
+    .refine-domain-info { flex: 1; min-width: 0; }
+    .refine-domain-name { font-size: 13px; font-weight: 600; }
+    .refine-domain-cnt { font-size: 11px; color: var(--text-muted); }
+    .refine-divider { height: 1px; background: var(--border); margin: 0 20px; }
+    .refine-footer {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .refine-cancel-btn {
+      padding: 13px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      flex-shrink: 0;
+    }
+
+    /* ─── Queue List View ─────────────────────────────────────────────────── */
+    #queue-list-view {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 16px;
+    }
+    .qlist-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .qlist-title { font-size: 18px; font-weight: 800; }
+    .qlist-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .qlist-empty {
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .qlist-empty svg { width: 48px; height: 48px; opacity: 0.2; }
+    .qlist-empty h3 { font-size: 16px; font-weight: 700; color: var(--text); }
+    .qlist-empty p { font-size: 13px; }
+    .qlist-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+      transition: border-color 0.15s;
+    }
+    .qlist-item:hover { border-color: var(--border-orange); }
+    .qlist-thumb {
+      width: 56px; height: 42px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--bg-card2);
+    }
+    .qlist-thumb-ph {
+      width: 56px; height: 42px;
+      border-radius: 8px;
+      background: var(--bg-card2);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qlist-thumb-ph svg { width: 18px; height: 18px; opacity: 0.15; }
+    .qlist-info { flex: 1; min-width: 0; }
+    .qlist-source {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 3px;
+    }
+    .qlist-item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; font-weight: 600; line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 3px;
+    }
+    .qlist-date { font-size: 10px; color: var(--text-dim); }
+    .qlist-btns { display: flex; flex-direction: column; gap: 5px; flex-shrink: 0; }
+    .qlist-btn {
+      width: 30px; height: 26px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .qlist-btn.save { color: var(--orange); border-color: var(--border-orange); background: var(--orange-glow); }
+    .qlist-btn.del { color: var(--red); border-color: rgba(239,68,68,0.2); background: rgba(239,68,68,0.05); }
+    .qlist-btn svg { width: 13px; height: 13px; }
+    .qlist-position {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      width: 22px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
     /* ─── Scrollbar ──────────────────────────────────────────────────────── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -1023,16 +1263,45 @@
         <p>Drop your bookmarks HTML file here<br/>or <strong>click to browse</strong></p>
       </div>
       <div id="bookmark-preview" style="display:none; margin-top:12px;"></div>
-      <button class="add-btn" id="import-btn" style="display:none; margin-top:10px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Import Selected
-      </button>
+      <div class="import-action-row" id="import-action-row">
+        <button class="refine-import-btn" id="refine-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          Refine
+        </button>
+        <button class="add-btn" id="import-btn" style="flex:1;margin-top:0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Import Articles
+        </button>
+      </div>
     </div>
 
     <div id="add-progress">
       <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
       <div class="progress-text" id="progress-text">Processing...</div>
       <div class="progress-log" id="progress-log"></div>
+      <button class="stop-import-btn" id="stop-import-btn">✕ Stop Import</button>
+    </div>
+  </div>
+
+  <!-- ── Queue List View ──────────────────────────────────────── -->
+  <div id="queue-list-view" class="view">
+    <div class="qlist-header">
+      <div class="qlist-title">Queue</div>
+      <div class="qlist-count" id="qlist-count">0 items</div>
+    </div>
+    <div id="qlist-body"></div>
+  </div>
+
+  <!-- ── Refine Import Overlay ─────────────────────────────────── -->
+  <div id="refine-overlay">
+    <div class="refine-hdr">
+      <div class="refine-hdr-title">Refine Import</div>
+      <div class="refine-hdr-count" id="refine-hdr-count">0 selected</div>
+    </div>
+    <div id="refine-list"></div>
+    <div class="refine-footer">
+      <button class="refine-cancel-btn" id="refine-cancel">Cancel</button>
+      <button class="add-btn" id="refine-confirm" style="flex:1;margin-top:0;">Import 0 Articles</button>
     </div>
   </div>
 
@@ -1055,6 +1324,13 @@
         <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
       </svg>
       <span class="nav-label">Add</span>
+    </button>
+    <button class="nav-btn" data-view="queue-list" onclick="switchView('queue-list')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+      <span class="nav-label">Queue</span>
     </button>
   </nav>
 </div>
@@ -1126,6 +1402,7 @@ function switchView(name) {
   });
   if (name === 'library') renderLibrary();
   if (name === 'feed') renderFeed();
+  if (name === 'queue-list') renderQueueList();
 }
 
 // ─── Metadata Fetching ────────────────────────────────────────────────────
@@ -1610,6 +1887,65 @@ function updateQueueCount() {
   document.getElementById('queue-count').textContent = n === 0 ? 'Empty' : `${n} in queue`;
 }
 
+// ─── Queue List Rendering ─────────────────────────────────────────────────
+function renderQueueList() {
+  const body = document.getElementById('qlist-body');
+  body.innerHTML = '';
+  const n = store.queue.length;
+  document.getElementById('qlist-count').textContent = `${n} item${n !== 1 ? 's' : ''}`;
+
+  if (n === 0) {
+    body.innerHTML = `
+      <div class="qlist-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+        </svg>
+        <h3>Queue is clear</h3>
+        <p>Add links or import bookmarks to fill it up.</p>
+      </div>`;
+    return;
+  }
+
+  store.queue.forEach((item, idx) => {
+    const el = document.createElement('div');
+    el.className = 'qlist-item';
+    el.innerHTML = `
+      <div class="qlist-position">${idx + 1}</div>
+      ${item.image
+        ? `<img class="qlist-thumb" src="${item.image}" alt="" onerror="this.style.display='none'" />`
+        : `<div class="qlist-thumb-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16l4-4 4 4 4-8 4 4"/><rect x="2" y="2" width="20" height="20" rx="2"/></svg></div>`}
+      <div class="qlist-info">
+        <div class="qlist-source">${item.source || hostname(item.url)}</div>
+        <div class="qlist-item-title">${item.title || hostname(item.url)}</div>
+        <div class="qlist-date">${friendlyDate(item.addedAt)}</div>
+      </div>
+      <div class="qlist-btns">
+        <button class="qlist-btn" title="Open" onclick="window.open('${item.url.replace(/'/g,"\\'")}','_blank')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </button>
+        <button class="qlist-btn save" title="Save for later" data-id="${item.id}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+        </button>
+        <button class="qlist-btn del" title="Delete" data-id="${item.id}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        </button>
+      </div>
+    `;
+    el.querySelector('.qlist-btn.save').onclick = (e) => {
+      e.stopPropagation();
+      saveForLater(item.id);
+      renderQueueList();
+    };
+    el.querySelector('.qlist-btn.del').onclick = (e) => {
+      e.stopPropagation();
+      deleteItem(item.id);
+      renderQueueList();
+    };
+    body.appendChild(el);
+  });
+}
+
 // ─── Library Rendering ────────────────────────────────────────────────────
 let libraryFilter = 'all';
 
@@ -1690,9 +2026,16 @@ document.getElementById('add-url-btn').onclick = async () => {
   await processUrls(urls, 'Paste');
 };
 
+let importAborted = false;
+
 async function processUrls(urls, source = 'Paste') {
+  importAborted = false;
   const btn = document.getElementById('add-url-btn');
   btn.disabled = true;
+
+  const stopBtn = document.getElementById('stop-import-btn');
+  stopBtn.classList.add('visible');
+  stopBtn.onclick = () => { importAborted = true; stopBtn.textContent = 'Stopping…'; stopBtn.disabled = true; };
 
   const progress = document.getElementById('add-progress');
   const bar = document.getElementById('progress-bar');
@@ -1703,10 +2046,12 @@ async function processUrls(urls, source = 'Paste') {
 
   let added = 0;
   for (let i = 0; i < urls.length; i++) {
+    if (importAborted) break;
+
     const url = urls[i];
     const pct = Math.round((i / urls.length) * 100);
     bar.style.width = pct + '%';
-    text.textContent = `Fetching ${i+1} of ${urls.length}...`;
+    text.textContent = `Fetching ${i+1} of ${urls.length}…`;
 
     // Deduplicate
     const allUrls = [...store.queue, ...store.saved, ...store.deferred].map(x => x.url);
@@ -1740,10 +2085,17 @@ async function processUrls(urls, source = 'Paste') {
   }
 
   bar.style.width = '100%';
-  text.textContent = `Done! Added ${added} link${added !== 1 ? 's' : ''} to queue.`;
+  const stoppedEarly = importAborted && added < urls.length;
+  text.textContent = stoppedEarly
+    ? `Stopped. Added ${added} of ${urls.length} links.`
+    : `Done! Added ${added} link${added !== 1 ? 's' : ''} to queue.`;
+
   saveStore();
   updateQueueCount();
   btn.disabled = false;
+  stopBtn.classList.remove('visible');
+  stopBtn.textContent = '✕ Stop Import';
+  stopBtn.disabled = false;
   showToast(`${added} link${added !== 1 ? 's' : ''} added`);
 
   setTimeout(() => {
@@ -1776,20 +2128,96 @@ uploadZone.addEventListener('drop', (e) => {
   reader.readAsText(file);
 });
 
-// Utility patterns to deprioritize
-const UTIL_PATTERNS = [
-  /mail\./i, /gmail\./i, /outlook\./i, /calendar\./i, /drive\./i, /docs\./i,
-  /sheets\./i, /admin/i, /dashboard/i, /login/i, /signin/i, /account/i,
-  /console\./i, /portal/i, /app\./i, /slack\./i, /notion\./i, /trello/i,
-  /jira/i, /github\.com$/, /gitlab/i, /localhost/i, /127\.0\.0\.1/,
+// Hostname-level exclusion patterns (non-article content)
+const UTIL_HOSTNAME = [
+  // Email & calendar
+  /^mail\./, /^webmail\./, /^smtp\./, /^imap\./,
+  /^(www\.)?gmail\.com$/, /^(www\.)?outlook\.(com|live|office)$/,
+  /^(www\.)?calendar\.google\.com$/, /^calendar\./,
+  // Productivity apps
+  /^(www\.)?drive\.google\.com$/, /^drive\./, /^docs\./,
+  /^(www\.)?sheets\./, /^(www\.)?notion\.so$/,
+  /^(www\.)?slack\.com$/, /^(www\.)?trello\.com$/,
+  /^(www\.)?asana\.com$/, /^(www\.)?monday\.com$/,
+  /^(www\.)?clickup\.com$/, /^(www\.)?basecamp\.com$/,
+  /^(www\.)?linear\.app$/, /^(www\.)?airtable\.com$/,
+  // Code & dev
+  /^github\.com$/, /^(www\.)?gitlab\.(com|io)$/,
+  /^(www\.)?bitbucket\.org$/, /^(www\.)?codepen\.io$/,
+  /^(www\.)?replit\.com$/, /^(www\.)?jsfiddle\.net$/,
+  // Video
+  /^(www\.)?youtube\.com$/, /^youtu\.be$/,
+  /^(www\.)?vimeo\.com$/, /^(www\.)?twitch\.tv$/,
+  /^(www\.)?tiktok\.com$/, /^(www\.)?dailymotion\.com$/,
+  // Social media
+  /^(www\.)?twitter\.com$/, /^(www\.)?x\.com$/,
+  /^(www\.)?instagram\.com$/, /^(www\.)?facebook\.com$/,
+  /^(www\.)?fb\.com$/, /^(www\.)?linkedin\.com$/,
+  /^(www\.)?pinterest\.(com|co\.\w+)$/, /^(www\.)?snapchat\.com$/,
+  /^(www\.)?threads\.net$/, /^(www\.)?reddit\.com$/,
+  // Shopping
+  /^(www\.)?amazon\.(com|co\.\w+|de|fr|ca|com\.au)$/,
+  /^(www\.)?ebay\.(com|co\.\w+)$/, /^(www\.)?etsy\.com$/,
+  /^(www\.)?walmart\.com$/, /^(www\.)?target\.com$/,
+  /^(www\.)?bestbuy\.com$/, /^(www\.)?wayfair\.com$/,
+  // Streaming & music
+  /^(www\.)?spotify\.com$/, /^(www\.)?soundcloud\.com$/,
+  /^(www\.)?netflix\.com$/, /^(www\.)?hulu\.com$/,
+  /^(www\.)?disneyplus\.com$/, /^(www\.)?hbomax\.com$/,
+  /^(www\.)?primevideo\.com$/, /^(www\.)?apple\.com$/,
+  /^(www\.)?pandora\.com$/,
+  // Maps & local
+  /^maps\.google\./, /^(www\.)?yelp\.com$/, /^(www\.)?tripadvisor\./,
+  /^(www\.)?doordash\.com$/, /^(www\.)?ubereats\.com$/,
+  // Design tools
+  /^(www\.)?figma\.com$/, /^(www\.)?canva\.com$/,
+  /^(www\.)?sketch\.com$/, /^(www\.)?invisionapp\.com$/,
+  // Cloud storage
+  /^(www\.)?dropbox\.com$/, /^(www\.)?box\.com$/,
+  /^(www\.)?icloud\.com$/, /^(www\.)?onedrive\.live\.com$/,
+  // Finance apps
+  /^(www\.)?paypal\.com$/, /^(www\.)?venmo\.com$/,
+  /^(www\.)?stripe\.com$/, /^(www\.)?robinhood\.com$/,
+  /^(www\.)?coinbase\.com$/,
+  // Auth / account pages
+  /^accounts\./, /^auth\./,
+];
+
+// URL-level patterns (path-based)
+const UTIL_PATH = [
+  /\/login[/?#]?$/i, /\/signin[/?#]?$/i, /\/sign-in[/?#]?$/i,
+  /\/logout/i, /\/register/i, /\/signup/i,
+  /\/admin\//i, /\/dashboard\//i, /\/console\//i, /\/portal\//i,
+  /\/account\//i, /\/settings\//i, /\/profile\//i,
+  /\/watch\?v=/i,          // YouTube video URLs
+  /\/status\/\d+/i,        // Twitter/X tweets
 ];
 
 function isUtilUrl(url) {
   try {
-    const h = new URL(url).hostname;
-    return UTIL_PATTERNS.some(p => p.test(h) || p.test(url));
+    const u = new URL(url);
+    const h = u.hostname.replace(/^www\./, '');
+    const fullHost = u.hostname;
+    if (UTIL_HOSTNAME.some(p => p.test(fullHost))) return true;
+    if (UTIL_PATH.some(p => p.test(u.pathname + u.search))) return true;
+    // Legacy patterns
+    const legacyChecks = ['admin', 'dashboard', 'console.', 'portal', 'app.',
+      'slack.', 'notion.', 'trello', 'jira', 'localhost', '127.0.0.1'];
+    if (legacyChecks.some(x => h.includes(x) || url.includes(x))) return true;
+    return false;
   } catch { return true; }
 }
+
+function isHomepageUrl(url) {
+  try {
+    const u = new URL(url);
+    const path = u.pathname;
+    return path === '/' || path === '';
+  } catch { return false; }
+}
+
+// Which domains are enabled in the refine overlay (hostname → bool)
+let refineDomainEnabled = {};
 
 function parseBookmarkHTML(html) {
   const parser = new DOMParser();
@@ -1801,7 +2229,7 @@ function parseBookmarkHTML(html) {
       url: a.href,
       title: a.textContent.trim() || a.href,
       addDate: a.getAttribute('add_date'),
-      isUtil: isUtilUrl(a.href),
+      isUtil: isUtilUrl(a.href) || isHomepageUrl(a.href),
     }))
     .filter(b => {
       try { const u = new URL(b.url); return ['http:', 'https:'].includes(u.protocol); }
@@ -1813,25 +2241,111 @@ function parseBookmarkHTML(html) {
 
   const preview = document.getElementById('bookmark-preview');
   preview.style.display = 'block';
+
+  // Build a sample of what was filtered for transparency
+  const filteredSamples = utils.slice(0, 3).map(b => hostname(b.url)).join(', ');
+  const moreFiltered = utils.length > 3 ? ` +${utils.length - 3} more` : '';
+
   preview.innerHTML = `
-    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;line-height:1.8;">
-      <div>Found <strong>${parsedBookmarks.length}</strong> bookmarks total</div>
-      <div style="color:var(--green)">✓ <strong>${articles.length}</strong> look like articles/reading content</div>
-      <div style="color:var(--text-dim)">⊘ <strong>${utils.length}</strong> appear to be utilities (will skip)</div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;line-height:1.9;">
+      <div style="font-weight:700;margin-bottom:4px;">${parsedBookmarks.length} bookmarks found</div>
+      <div style="color:var(--green)">✓ <strong>${articles.length}</strong> kept as reading content</div>
+      <div style="color:var(--text-dim)">⊘ <strong>${utils.length}</strong> filtered out${utils.length > 0 ? ` <span style="font-size:11px;">(${filteredSamples}${moreFiltered})</span>` : ''}</div>
     </div>
   `;
 
+  const actionRow = document.getElementById('import-action-row');
   const importBtn = document.getElementById('import-btn');
   if (articles.length > 0) {
-    importBtn.style.display = 'flex';
-    importBtn.textContent = `Import ${articles.length} Articles`;
+    actionRow.classList.add('visible');
+    importBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;"><polyline points="20 6 9 17 4 12"/></svg> Import ${articles.length} Articles`;
   }
 }
 
 document.getElementById('import-btn').onclick = async () => {
   const articles = parsedBookmarks.filter(b => !b.isUtil);
   const urls = articles.map(b => b.url);
-  document.getElementById('import-btn').style.display = 'none';
+  document.getElementById('import-action-row').classList.remove('visible');
+  document.getElementById('bookmark-preview').style.display = 'none';
+  await processUrls(urls, 'Bookmark');
+};
+
+document.getElementById('refine-btn').onclick = () => openRefineOverlay();
+
+function openRefineOverlay() {
+  const articles = parsedBookmarks.filter(b => !b.isUtil);
+
+  // Group by domain
+  const domainMap = {};
+  articles.forEach(b => {
+    const d = hostname(b.url);
+    if (!domainMap[d]) domainMap[d] = [];
+    domainMap[d].push(b);
+  });
+
+  // Initialize all domains as enabled
+  refineDomainEnabled = {};
+  Object.keys(domainMap).forEach(d => { refineDomainEnabled[d] = true; });
+
+  renderRefineList(domainMap);
+  document.getElementById('refine-overlay').classList.add('open');
+}
+
+function renderRefineList(domainMap) {
+  const list = document.getElementById('refine-list');
+  list.innerHTML = '';
+
+  const domains = Object.keys(domainMap).sort((a, b) => domainMap[b].length - domainMap[a].length);
+  let totalSelected = domains.reduce((n, d) => n + (refineDomainEnabled[d] ? domainMap[d].length : 0), 0);
+
+  document.getElementById('refine-hdr-count').textContent = `${totalSelected} selected`;
+  document.getElementById('refine-confirm').innerHTML =
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;"><polyline points="20 6 9 17 4 12"/></svg> Import ${totalSelected} Articles`;
+
+  const label = document.createElement('div');
+  label.className = 'refine-section-label';
+  label.textContent = `${domains.length} domains — uncheck to exclude`;
+  list.appendChild(label);
+
+  domains.forEach((d, i) => {
+    const row = document.createElement('div');
+    row.className = 'refine-domain-row';
+
+    const check = document.createElement('div');
+    check.className = 'refine-check' + (refineDomainEnabled[d] ? ' on' : '');
+
+    const info = document.createElement('div');
+    info.className = 'refine-domain-info';
+    info.innerHTML = `<div class="refine-domain-name">${d}</div><div class="refine-domain-cnt">${domainMap[d].length} article${domainMap[d].length !== 1 ? 's' : ''}</div>`;
+
+    row.appendChild(check);
+    row.appendChild(info);
+    row.onclick = () => {
+      refineDomainEnabled[d] = !refineDomainEnabled[d];
+      renderRefineList(domainMap);
+    };
+
+    list.appendChild(row);
+    if (i < domains.length - 1) {
+      const div = document.createElement('div');
+      div.className = 'refine-divider';
+      list.appendChild(div);
+    }
+  });
+}
+
+document.getElementById('refine-cancel').onclick = () => {
+  document.getElementById('refine-overlay').classList.remove('open');
+};
+
+document.getElementById('refine-confirm').onclick = async () => {
+  const articles = parsedBookmarks.filter(b => !b.isUtil);
+  const urls = articles
+    .filter(b => refineDomainEnabled[hostname(b.url)])
+    .map(b => b.url);
+  document.getElementById('refine-overlay').classList.remove('open');
+  document.getElementById('import-action-row').classList.remove('visible');
+  document.getElementById('bookmark-preview').style.display = 'none';
   await processUrls(urls, 'Bookmark');
 };
 
